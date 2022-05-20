@@ -14,12 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "shop")
+@Table(name = "manufacturer")
 @RequiredArgsConstructor
 @Getter
 @Setter(AccessLevel.PUBLIC)
 @ToString
-public class Shop {
+public class Manufacturer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
