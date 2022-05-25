@@ -8,6 +8,8 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,4 +51,11 @@ public class Product {
 
     @Column(name = "price_update_date", nullable = false)
     private LocalDate priceUpdateDate;
+
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "quantity_unit", length = 10, nullable = false)
+    private Unit quantityUnit;
 }

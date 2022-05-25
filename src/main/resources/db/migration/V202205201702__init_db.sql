@@ -23,5 +23,7 @@ CREATE TABLE product
     manufacturer_id     INT             NOT NULL         REFERENCES manufacturer (id),
     price               DECIMAL(3, 2)   NOT NULL,
     shop_id             INT             NOT NULL         REFERENCES shop (id),
-    price_update_date   DATE            NOT NULL
+    price_update_date   DATE            NOT NULL,
+    quantity            INT             NOT NULL,
+    quantity_unit       VARCHAR(10)     NOT NULL
 )
