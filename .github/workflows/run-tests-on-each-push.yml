@@ -15,7 +15,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Run local database
-        run: docker run -e POSTGRES_PASSWORD=password -d postgres
+        run: docker run -e POSTGRES_PASSWORD=password -e POSTGRES_DB=cent -d -p 5432:5432 postgres
 
       - name: Cache local Maven repository
         uses: actions/cache@v3
