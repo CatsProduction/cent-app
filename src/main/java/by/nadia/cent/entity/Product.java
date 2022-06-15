@@ -14,12 +14,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -43,11 +40,11 @@ public class Product {
     private Manufacturer manufacturer;
 
     @Column(name = "price", precision = 3, scale = 2, nullable = false)
-    private BigDecimal price;
+    private Double price;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "shop_id", referencedColumnName = "id")
-    private List<Shop> shop;
+    private Shop shop;
 
     @Column(name = "price_update_date", nullable = false)
     private LocalDate priceUpdateDate;
