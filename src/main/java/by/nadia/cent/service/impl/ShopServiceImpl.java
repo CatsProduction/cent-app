@@ -7,8 +7,7 @@ import by.nadia.cent.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -53,14 +52,12 @@ public class ShopServiceImpl {
 
         List<Product> existingProducts;
 
-        List<Product> shopProducts = shop.getProducts();
+        List<Product> shopProducts = new ArrayList<>();
 
         existingProducts = shopProducts.stream()
                 .filter(customerProduct -> customerProducts.stream()
-                        .anyMatch(shopProduct -> shopProduct.getManufacturer().equals(customerProduct.getManufacturer()) &&
-                                shopProduct.getType().equals(customerProduct.getType()) &&
-                                shopProduct.getQuantityUnit().equals(customerProduct.getQuantityUnit()) &&
-                                shopProduct.getQuantity().equals(customerProduct.getQuantity())))
+                        .anyMatch(shopProduct -> shopProduct.getBrand().equals(customerProduct.getBrand()) &&
+                                shopProduct.getType().equals(customerProduct.getType()) ))
                 .collect(Collectors.toList());
 
         return existingProducts;

@@ -14,18 +14,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "product_type")
+@Table(name = "address")
 @RequiredArgsConstructor
 @Getter
 @Setter(AccessLevel.PUBLIC)
 @ToString
-public class ProductType {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "type", length = 50, nullable = false)
-    private String type;
+    @Column(name = "build_number", length = 100, nullable = false)
+    private String buildNumber;
+
+    @Column(name = "street", length = 100, nullable = false)
+    private String street;
+
+    @Column(name = "city", length = 100, nullable = false)
+    private String city;
+
+    @Column(name = "country", length = 100, nullable = false)
+    private String country;
 }

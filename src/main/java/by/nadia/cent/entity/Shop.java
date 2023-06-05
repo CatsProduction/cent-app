@@ -10,9 +10,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Id;
+
 import java.util.List;
 
 @Entity
@@ -28,9 +31,12 @@ public class Shop {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name", length = 32, nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "shop_id")
-    private List<Product> products;
+    @OneToOne
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
+
+
 }

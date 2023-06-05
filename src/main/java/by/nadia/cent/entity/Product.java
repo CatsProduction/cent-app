@@ -8,15 +8,13 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "product")
@@ -36,8 +34,8 @@ public class Product {
     private ProductType type;
 
     @ManyToOne
-    @JoinColumn(name = "manufacturer_id", referencedColumnName = "id")
-    private Manufacturer manufacturer;
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private Brand brand;
 
     @Column(name = "price", precision = 3, scale = 2, nullable = false)
     private Double price;
@@ -46,13 +44,6 @@ public class Product {
     @JoinColumn(name = "shop_id", referencedColumnName = "id")
     private Shop shop;
 
-    @Column(name = "price_update_date", nullable = false)
-    private LocalDate priceUpdateDate;
-
-    @Column(name = "quantity", nullable = false)
-    private Integer quantity;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "quantity_unit", length = 10, nullable = false)
-    private Unit quantityUnit;
+    @Column(name = "date_of_purchase", nullable = false)
+    private Date dateOfPurchase;
 }
